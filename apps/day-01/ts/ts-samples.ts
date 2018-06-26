@@ -83,14 +83,18 @@
 
 // console.log(greet('naveen'));
 
-function buildName(firstName: string, ...restOfName: string[]) {
-  return firstName + ' ' + restOfName.join(' ');
-}
+// function buildName(firstName: string, ...restOfName: string[]): string {
+//   return firstName + ' ' + restOfName.join(' ');
+// }
 
-let result1 = buildName('Bob'); // error, too few params
-let result2 = buildName('Bob', 'Adams', 'Sr.'); // error, too many params
-let result3 = buildName('Bob', 'Adams'); // just right
+// let result1 = buildName('Bob'); // error, too few params
+// let result2 = buildName('Bob', 'Adams', 'Sr.'); // error, too many params
+// let result3 = buildName('Bob', 'Adams'); // just right
 
-console.log('result1:', result1);
-console.log('result2:', result2);
-console.log('result3:', result3);
+// console.log('result1:', result1);
+// console.log('result2:', result2);
+// console.log('result3:', result3);
+
+const greet: (userName: string) => string = function(userName) {
+  return 'Hello ' + userName;
+};

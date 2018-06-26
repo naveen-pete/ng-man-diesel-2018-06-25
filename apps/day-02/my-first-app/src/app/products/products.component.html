@@ -1,0 +1,14 @@
+<h2>Products Component</h2>
+<p>This component will show the list of products</p>
+
+<div>
+  Product Name: {{ productName }}
+</div>
+<hr>
+<div>
+  <input type="text" class="form-control" [(ngModel)]="productName" (input)="onInput($event)">
+</div>
+<hr>
+<div>
+  <button class="btn btn-primary" (click)="onSave($event)">Save</button>
+</div>
