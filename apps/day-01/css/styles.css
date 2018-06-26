@@ -1,0 +1,52 @@
+/* * {
+  border: 1px solid lightgrey;
+} */
+
+/* body {} */
+
+p {
+  color: green;
+  background-color: yellow;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  width: 300px;
+  border: solid;
+  margin: 30px 20px 40px 10px;
+}
+
+#demo {
+  color: blue;
+}
+
+.myclass {
+  color: rgba(255, 0, 0, 1);
+  border: solid;
+  border-radius: 5px;
+}
+
+li>a {
+  background-color: #00FA9A;
+}
+
+/* a[href="www.google.co.in"] {
+  color: #00FFFF
+} */
+
+p+h2 {
+  color: #808000;
+}
+
+a::before {
+  content: "♥";
+}
+
+a::after {
+  content: "»";
+  color: red;
+}
+
+span {
+  font-size: 2em;
+}
+
+/* This is a comment */
