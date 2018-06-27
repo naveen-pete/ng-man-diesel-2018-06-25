@@ -1,9 +1,9 @@
 <div class="card mb-4">
   <div class="card-header">
-    <h5>{{ product.name | uppercase }}</h5>
+    <h4>{{ product.name | uppercase }}</h4>
   </div>
   <div class="card-body">
-    <p class="card-text" [ngStyle]="{ color: product.isAvailable ? 'blue' : 'red' }">
+    <p appHighlight color="lightblue" class="card-text" [ngStyle]="{ color: product.isAvailable ? 'blue' : 'red' }">
       <strong>Description:</strong> {{ product.description }}
     </p>
   </div>

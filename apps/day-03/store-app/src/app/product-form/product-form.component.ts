@@ -1,10 +1,17 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Output,
+  ViewEncapsulation
+} from '@angular/core';
 import { Product } from '../models/product';
 
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css']
+  styleUrls: ['./product-form.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProductFormComponent implements OnInit {
   @Output('created') productCreated = new EventEmitter<Product>();

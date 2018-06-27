@@ -9,6 +9,8 @@ import { Product } from '../models/product';
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
+  today = Date.now();
+  searchText = '';
 
   constructor() {
     this.products = [
