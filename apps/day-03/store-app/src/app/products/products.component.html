@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 col-md-5 col-lg-4">
+      <app-product-form (created)="onProductCreated($event)"></app-product-form>
+    </div>
+
+    <div class="col-sm-6 col-md-7 col-lg-8">
+      <app-product-detail [productData]="product" *ngFor="let product of products"></app-product-detail>
+    </div>
+  </div>
+</div>
