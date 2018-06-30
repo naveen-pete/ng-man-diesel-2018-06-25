@@ -1,0 +1,101 @@
+Animations
+----------
+* Provide better user experience
+* Make UI fun and easier to use
+
+Dependencies
+------------
+Before you can add animations, you need to import a few animation-specific imports and functions:
+
+app.module.ts
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+Animations are defined inside @Component metadata.
+
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition
+} from '@angular/animations';
+
+You can define an animation trigger in the component metadata.
+
+Angular animations are defined as logical states and transitions between states.
+
+What is a state?
+----------------
+An animation state is a string value that you define in your application code. You can define styles for each animation state.
+
+These state definitions specify the end styles of each state. They are applied to the element once it has transitioned to that state, and stay as long as it remains in that state. 
+
+What are transitions?
+---------------------
+After you define states, you can define transitions between the states. Each transition controls the timing of switching between one set of styles and the next. You can also apply a style during an animation but not keep it around after the animation finishes. You can define such styles inline, in the transition.
+
+@Component({
+  animations: [
+    trigger('trigger-name', [
+      state('state-name-1', style({<style>})),
+      state('state-name-2', style({<style>})),
+      transition('state-name-1 => state-name-2', animate(<params>)),
+      transition('state-name-2 => state-name-1', animate(<params>))
+    ])
+  ]
+})
+
+Use the [@triggerName] syntax to attach the animation to one or more elements in the component's template.
+
+Wildcard State *
+----------------
+The * ("wildcard") state matches any animation state. This is useful for defining styles and transitions that apply regardless of which state the animation is in.
+
+The void state
+--------------
+The special state called void can apply to any animation. It applies when the element is not attached to a view, perhaps because it has not yet been added or because it has been removed. The void state is useful for defining enter and leave animations.
+
+Animatable properties and units
+-------------------------------
+Since Angular's animation support builds on top of Web Animations, you can animate any property that the browser considers animatable. This includes positions, sizes, transforms, colors, borders, and many others. The W3C maintains a list of animatable properties on its CSS Transitions page.
+
+Animation timing
+----------------
+There are three timing properties you can tune for every animated transition: 
+  1. Duration: controls how long the animation takes to run from start to finish 
+  2. Delay: controls the length of time between the animation trigger and the beginning of the transition 
+  3. Easing function: controls how the animation accelerates and decelerates during its runtime 
+
+They are all combined into a single transition timing string.
+
+Multi-step animations with keyframes
+------------------------------------
+Animation keyframes go beyond a simple transition to a more intricate animation that goes through one or more intermediate styles when transitioning between two sets of styles.
+
+For each keyframe, you specify an offset that defines at which point in the animation that keyframe applies. The offset is a number between zero, which marks the beginning of the animation, and one, which marks the end.
+
+Parallel animation groups
+-------------------------
+You've seen how to animate multiple style properties at the same time: just put all of them into the same style() definition.
+
+But you may also want to configure different timings for animations that happen in parallel. For example, you may want to animate two CSS properties but use a different easing function for each one.
+
+Animation callbacks
+-------------------
+A callback is fired when an animation is started and also when it is done.
+
+The callbacks receive an AnimationEvent that contains useful properties such as fromState, toState and totalTime.
+
+
+small,
+normal,
+large
+
+normal => *, animate()
+* => normal, animate()
+* => *
+
+1s
+
+0s - 600ms --    1s     --> 2s
+0     0.3        0.5        1

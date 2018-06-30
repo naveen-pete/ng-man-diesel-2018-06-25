@@ -1,0 +1,74 @@
+Http
+----
+App Module
+* HttpModule - '@angular/http'
+* Add HttpModule to 'imports' array
+
+Service
+* 'Http' service / class - '@angular/http'
+
+Post method
+* http.post(<url>, <object>, { headers: <headers>);
+* <headers> is optional 
+* Firebase url - should end with .json
+  - https://ng-store-app.firebaseio.com/products.json
+
+Headers
+* headers = new Headers( { 'header': 'value' } );
+
+HttpClient
+----------
+App Module
+* HttpClientModule - '@angular/common/http'
+
+Service
+* HttpClient - '@angular/common/http'
+  - Automatically returns the data (response.json()), this means, we do not need map() operator
+  - Methods are generic methods, we can mention the data type that the method operates on
+  
+* Get full response object
+  httpClient.get(<url>, {
+    observe: 'response',   // 'body' - default, 'events'
+    responseType: 'text'   // 'json' - default, 'blob', 'arraybuffer'
+  });
+  
+* Observe Http Events
+  - Service
+    httpClient.post(<url>, <data>, {
+      observe: 'events'
+    });
+  
+  - Component - Success callback parameter for subscribe()
+    (resonse: HttpEvent) => {}    // @angular/common/http
+    
+  - HttpEventType    // @angular/common/http
+  
+* Setting Headers
+  - Service
+  
+    httpClient.post(<url>, <data>, {
+      observe: 'body',
+      headers: new HttpHeaders()            // @angular/common/http
+        .set('Authorization', 'Bearer abcd')
+    });
+
+* Setting Params
+  - Service
+  
+    httpClient.post(<url>, <data>, {
+      observe: 'body',
+      params: new HttpParams()            // @angular/common/http
+        .set('key', 'value')
+    });
+
+* Progress
+  - Service
+    
+    const req = new HttpRequest(<method>, <url>, <data>, {
+      reportProgress: true,
+      params: new HttpParams()            // @angular/common/http
+        .set('key', 'value')
+    })
+    return this.httpClient.request(req);
+    
+* Interceptors
